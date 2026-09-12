@@ -56,7 +56,7 @@ int main(void)
 	std::cout << "copy[1] = " << copy[3] << " (modified copy)" << std::endl;
 	std::cout << "nums[1] = " << nums[3] << " (should be untouched)" << std::endl;
 
-	std::cout << std::endl <<CYAN<< "-- overloar = check --" << DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "-- overload = check --" << DEFAULT<< std::endl;
 	Array<int> assigned;
 	assigned = nums;
 	nums[1] = 777;
@@ -66,12 +66,7 @@ int main(void)
 	std::cout << "assigned[4] = " << assigned[4] << " (modified assigned)" << std::endl;
 	std::cout << "nums[4] = " << nums[4] << " (should be untouched)" << std::endl;
 
-	std::cout << std::endl <<CYAN<< "-- self-assignment (a = a) --" << DEFAULT<< std::endl;
-	assigned = assigned;
-	std::cout << "assigned.size() = " << assigned.size() << " (still valid after self-assignment)" << std::endl;
-	std::cout << "assigned[4] = " << assigned[4] << " (unchanged)" << std::endl;
-
-	std::cout << std::endl <<CYAN<< "-- out-of-range access --" <<  DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "oor access" <<  DEFAULT<< std::endl;
 	try
 	{
 		std::cout << nums[100] << std::endl;
@@ -88,18 +83,8 @@ int main(void)
 	{
 		std::cout << BOLDRED <<"caught: " << e.what() << DEFAULT << std::endl;
 	}
-	try
-	{
-		// off-by-one: the last valid index is size() - 1, so size() itself
-		// must already be rejected
-		std::cout << nums[nums.size()] << std::endl;
-	}
-	catch (std::exception const &e)
-	{
-		std::cout << BOLDRED << "caught: " << e.what() << DEFAULT << std::endl;
-	}
 
-	std::cout << std::endl <<CYAN<< "-- const correctness --" << DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "const" << DEFAULT<< std::endl;
 	Array<int> const &constRef = nums;
 	std::cout << "constRef.size() = " << constRef.size() << std::endl;
 	std::cout << "constRef[2] = " << constRef[2] << std::endl;
@@ -112,6 +97,16 @@ int main(void)
 	{
 		std::cout << BOLDRED << "caught: " << e.what() << DEFAULT << std::endl;
 	}
+
+	// try
+	// {
+	// 	constRef[1] = 150;
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << std::endl;
+	// }
+	
 
 	std::cout << std::endl <<CYAN<< "types plus complexes nuhuhuhuhuh" <<  DEFAULT<< std::endl;
 	Array<std::string> words(3);

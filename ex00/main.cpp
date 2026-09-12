@@ -26,5 +26,9 @@ int main(void)
 	std::cout <<  YELLOW <<"min(e, f) = " << ::min(e, f) << DEFAULT <<std::endl;
 	std::cout <<  YELLOW <<"max(e, f) = " << ::max(e, f) <<DEFAULT << std::endl;
 
+	int g = 5, h = 5;
+	std::cout << ::min(g, h) << " " << ::max(g, h) << std::endl;
+
+
 	return (0);
 }
