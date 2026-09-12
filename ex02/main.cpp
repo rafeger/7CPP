@@ -22,9 +22,9 @@ int main(void)
 
 	std::cout << std::endl <<CYAN<< "-- parametric constructor with n = 0 --" << DEFAULT<< std::endl;
 	Array<int> zero(0);
-	std::cout << "zero.size() = " << zero.size() << " (same as default constructor)" << std::endl;
+	std::cout << "zero.size() = " << zero.size() << std::endl;
 
-	std::cout << std::endl <<CYAN<< "-- parametric constructor (zero-init check) --" << DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "-- nums--" << DEFAULT<< std::endl;
 	//le compilateur prends le patron template donc : template <typename T> class Array {...}
 	//et remplis ce quon lui donne
 	// CAD : chaque T est remplace par un int, donc on genere une instance de classe Array<int>
@@ -38,18 +38,25 @@ int main(void)
 	std::cout << std::endl;
 
 	for (unsigned int i = 0; i < nums.size(); ++i)
-		nums[i] = (i + 1) * 10;
+		nums[i] = (i + 1);
 
-	std::cout << std::endl <<CYAN<< "-- copy constructor: deep-copy check --"<< DEFAULT << std::endl;
+	std::cout << std::endl <<CYAN<< "-- copy constructor check --"<< DEFAULT << std::endl;
 	Array<int> copy(nums);
-	nums[0] = 999;
+	std::cout << "nums[]" << std::endl;
+	for (unsigned int i = 0; i < nums.size(); i++)
+		std::cout << "nums[" << i << "] = "<< nums[i] << " | " ;
+	std::cout << std::endl;
+	for (unsigned int i = 0; i < copy.size(); i++)
+		std::cout << "copy[" << i << "] = "<< copy[i] << " | " ;
+	std::cout << std::endl;
+	nums[0] = 42;
 	std::cout << "nums[0] = " << nums[0] << " (modified original)" << std::endl;
 	std::cout << "copy[0] = " << copy[0] << " (should be untouched)" << std::endl;
-	copy[3] = 555;
-	std::cout << "copy[3] = " << copy[3] << " (modified copy)" << std::endl;
-	std::cout << "nums[3] = " << nums[3] << " (should be untouched)" << std::endl;
+	copy[1] = 42;
+	std::cout << "copy[1] = " << copy[3] << " (modified copy)" << std::endl;
+	std::cout << "nums[1] = " << nums[3] << " (should be untouched)" << std::endl;
 
-	std::cout << std::endl <<CYAN<< "-- assignment operator: deep-copy check --" << DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "-- overloar = check --" << DEFAULT<< std::endl;
 	Array<int> assigned;
 	assigned = nums;
 	nums[1] = 777;
@@ -106,14 +113,14 @@ int main(void)
 		std::cout << BOLDRED << "caught: " << e.what() << DEFAULT << std::endl;
 	}
 
-	std::cout << std::endl <<CYAN<< "-- works with a non-primitive type --" <<  DEFAULT<< std::endl;
+	std::cout << std::endl <<CYAN<< "types plus complexes nuhuhuhuhuh" <<  DEFAULT<< std::endl;
 	Array<std::string> words(3);
 	std::cout << "doit etre vide \"" << words[0] << "\"" << std::endl;
 	words[0] = "Moloch";
 	words[1] = "Baal";
 	words[2] = "Akemi Homura";
 	for (unsigned int i = 0; i < words.size(); ++i)
-		std::cout << words[i] << " ";
+		std::cout << words[i] << " - ";
 	std::cout << std::endl;
 
 	return (0);
