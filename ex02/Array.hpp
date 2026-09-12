@@ -2,6 +2,8 @@
 #define ARRAY_HPP
 
 #include <stdexcept>
+#include <iostream>
+#include <string>
 
 
 # define BOLDWHITE "\e[1;37m"

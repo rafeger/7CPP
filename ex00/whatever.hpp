@@ -8,6 +8,9 @@
 # define YELLOW "\e[0;33m"
 # define CYAN 	"\e[0;36m"
 
+#include <iostream>
+#include <string>
+
 template <typename T>
 void swap(T &a, T &b)
 {

@@ -2,6 +2,8 @@
 #define ITER_HPP
 
 #include <cstddef>
+#include <iostream>
+#include <string>
 
 # define BOLDWHITE "\e[1;37m"
 # define BOLDRED "\e[1;91m"
